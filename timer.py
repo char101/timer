@@ -215,6 +215,8 @@ class Timer(QLCDNumber):
     def tick(self):
         self.time = self.time.addSecs(1)
         text = self.text()
+        if len(text) != self.digitCount():
+            self.setDigitCount(len(text))
         self.display(text)
         self.textChanged.emit(text)
 
